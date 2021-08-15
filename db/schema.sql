@@ -7,15 +7,6 @@ CREATE DATABASE employeeTracker_db;
 -- Use 'employeeTracker_db'so that all following code will affect it
 USE employeeTracker_db;
 
-CREATE TABLE employee (
-    id INT NOT NULL auto_increment,
-    first_name VARCHAR(30) NOT NULL,
-    last_name VARCHAR(30) NOT NULL,
-    role_id INT NOT NULL, 
-    manager_id INT NOT NULL, 
-    PRIMARY KEY (id)
-);
-
 CREATE TABLE department (
     id INT NOT NULL auto_increment, 
     department_name VARCHAR(30) NOT NULL,
@@ -29,3 +20,15 @@ CREATE TABLE role (
     department_id INT NOT NULL,
     PRIMARY KEY (id)
 );
+
+CREATE TABLE employee (
+    id INT NOT NULL auto_increment,
+    first_name VARCHAR(30) NOT NULL,
+    last_name VARCHAR(30) NOT NULL,
+    role_id INT NOT NULL, 
+    manager_id INT, 
+    PRIMARY KEY (id)
+);
+
+
+
