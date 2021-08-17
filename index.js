@@ -179,3 +179,49 @@ function viewAllRoles() {
         startTracker();
     })
 }
+
+// Add Role
+
+function addRole() {
+    inquirer
+        .prompt([
+            {
+                type: "input",
+                name: "titleRole",
+                message: "Please enter the employee's title",
+            },
+            {
+                type: "input",
+                name: "salaryRole",
+                message: "Please enter the employee's salary",
+            },
+            {
+                type: "input",
+                name: "departmentRole",
+                message: "Please enter the employee's department ID",
+            }
+        ])
+        .then(function (res) {
+            const title = res.titleRole; 
+            const salary = res.salaryRole;
+            const departmentID = res.departmentRole;
+            const query = `INSET INTO role (title, salary, department_id) VALUES ("${title}", "${salary}", "${departmentID}")`;
+            db.query(query, function (err, res) { 
+                if (err) {
+                    throw err;
+                }
+                console.table(res);
+                startTracker();
+            });
+        });
+}
+
+// View All Departments 
+
+function viewAllDepartments() {
+    const query = "SELECT * FROM department";
+    db.query(query, function (err, res) {
+      console.table(res);
+      startTracker();
+    });
+  }
