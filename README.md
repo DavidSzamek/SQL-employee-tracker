@@ -41,6 +41,10 @@ To run this application, you must;
 
 
 
+https://user-images.githubusercontent.com/83954907/129837066-2f01b2ee-848a-4293-b77b-950e06f5ee9b.mp4
+
+
+
 ## Instructions 
 
 'View All Employees' will print all current employees in a table. 
