@@ -13,7 +13,7 @@ const db = mysql.createConnection({
     host: "localhost",
     port: 3306,
     user: "root",
-    password: " ",
+    password: "Bandit23@",
     database: "employeeTracker_db",
 });
 
@@ -95,7 +95,7 @@ function startTracker() {
 
 // View All Employees
 function viewAllEmployees() {
-    const query = "SELECT employee.id, employee.first_name, employe.last_name, role.title, department.department_name AS department, role.salary FROM employee LEFT JOIN role ON employee.role_id = role.id LEFT JOIN department on role.department_id = department.id";
+    const query = "SELECT employee.id, employee.first_name, employee.last_name, role.title, department.department_name AS department, role.salary FROM employee LEFT JOIN role ON employee.role_id = role.id LEFT JOIN department on role.department_id = department.id";
     db.query(query, function (err, res) {
         console.table(res);
         startTracker();
@@ -206,7 +206,7 @@ function addRole() {
             const title = res.titleRole; 
             const salary = res.salaryRole;
             const departmentID = res.departmentRole;
-            const query = `INSET INTO role (title, salary, department_id) VALUES ("${title}", "${salary}", "${departmentID}")`;
+            const query = `INSERT INTO role (title, salary, department_id) VALUES ("${title}", "${salary}", "${departmentID}")`;
             db.query(query, function (err, res) { 
                 if (err) {
                     throw err;
