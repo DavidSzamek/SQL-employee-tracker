@@ -129,10 +129,10 @@ function addEmployee() {
         ])
         .then(function (res) {
             const firstName = res.firstName;
-            const lastName = res.firstName;
+            const lastName = res.lastName;
             const employeeRoleId = res.addEmployeeRoleId; 
             const employeeManagerId = res.addEmployeeManagerId;
-            const query = `INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES ("${firstName}", "${lastName}, "${employeeRoleId}", "${employeeManagerId}")`;
+            const query = `INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES ("${firstName}", "${lastName}", "${employeeRoleId}", "${employeeManagerId}")`;
             db.query(query, function (err, res) {
                 if (err) {
                     throw err;
