@@ -5,6 +5,7 @@ const mysql = require("mysql");
 const consoleTable = require("console.table");
 const express = require("express");
 const { connect } = require("http2");
+const { start } = require("repl");
 
 // createConnection() metho to link Node.js and MySQL 
 const db = mysql.createConnection({
@@ -224,4 +225,27 @@ function viewAllDepartments() {
       console.table(res);
       startTracker();
     });
-  }
+};
+
+// Add Department
+
+function addDepartment() {
+    inquirer
+        .prompt({
+            type: "input",
+            name: "newDep",
+            message: "Please enter the name of the new department", 
+        })
+        .then(function (res) {
+            const newDepartment = res.newDep;
+            const query = `INSERT INTO department (department_name) VALUES ("${newDepartment}")`;
+            db.query(query, function (err, res) {
+                if (err) {
+                    throw err;
+                }
+                console.table(res);
+                startTracker();
+            });
+        });
+};
+
